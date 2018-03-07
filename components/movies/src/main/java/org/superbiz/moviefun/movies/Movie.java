@@ -21,6 +21,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 public class Movie implements Serializable {
@@ -100,5 +101,24 @@ public class Movie implements Serializable {
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+        Movie movie = (Movie) o;
+        return getId() == movie.getId() &&
+                getYear() == movie.getYear() &&
+                getRating() == movie.getRating() &&
+                Objects.equals(getDirector(), movie.getDirector()) &&
+                Objects.equals(getTitle(), movie.getTitle()) &&
+                Objects.equals(getGenre(), movie.getGenre());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getId(), getDirector(), getTitle(), getYear(), getGenre(), getRating());
     }
 }

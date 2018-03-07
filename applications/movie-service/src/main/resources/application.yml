@@ -1,4 +1,4 @@
-server.port: 8082
+server.port: 8084
 
 spring:
   jpa:
@@ -9,15 +9,6 @@ spring:
     url: jdbc:mysql://localhost:3306/movies?useSSL=false
     username: root
 
-  mvc.view:
-    prefix: /WEB-INF/
-    suffix: .jsp
-
 logging.level:
-  root: WARN
+  root: INFO
   org.superbiz.moviefun: DEBUG
-
-s3:
-  accessKey: <access key id>
-  secretKey: <secret access key>
-  bucketName: <name of the bucket>
